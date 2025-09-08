@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>学生注册表单</title>
+		<!-- 新 Bootstrap5 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		 
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<style>
+			#loginBtn{
+				background-color: #1e9fff;
+				border: none;
+				border-radius: 2px;
+				color: white;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2>学生注册表单</h2>
+			<form  onsubmit="return form_validate()">
+				<div class="mb-3 mt-3">
+					姓名<input class="form-control" id="nickname" type="text" placeholder="请输入您的姓名"/>
+				</div>
+				<div class="mb-3 mt-3">
+					手机号<input class="form-control" id="number" type="number" name="number" min="11" max="11" placeholder="请输入11位手机号"/>
+				</div>
+				<div class="mb-3 mt-3">
+					邮箱<input class="form-control" id="email" type="email" name="email" placeholder="可选,如:student@school.com"/>
+				</div>
+				<div class="mb-3 mt-3">
+					密码<input class="form-control" id="password" type="password" name="password" placeholder="至少6位,包含字母和数字"/>
+				</div>
+				<div class="mb-3 mt-3">
+					确认密码<input class="container" id="confirmpassword" type="password" placeholder="请再次输入密码"/>
+				</div>
+				<div class="mb-3 mt-3">
+					<button id="loginBtn" class="form-control">登&nbsp;录</button>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script>
+		function form_validate(){
+			let nickname = document.getElementById("nickname");
+			if(nickname.value.trim()===""){
+				alert("姓名不能为空");
+				return false;
+			}
+			let password = document.getElementById("password");
+			let passwordreg = /^[A-Za-z0-9]{6,30}$/;
+			if(password.value.trim()===""){
+				alert("请正确填写密码(至少6位，包含字母和数字))
+			}else{
+				if(!passwordreg.test(password.value)){
+					alert("请正确填写密码(至少6位，包含字母和数字)");
+					return false;
+			}
+			}
+			let confirmpassword = document.getElementById("confirmpassword");
+			if(confirmpassword.value!==password.value){
+				alert("两次输入的密码不一致");
+				return false;
+			}
+			return false;
+			}
+	</script>
+</html>
